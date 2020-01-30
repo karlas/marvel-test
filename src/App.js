@@ -2,6 +2,6 @@ import React from 'react'
 
 export default () => {
   return (
-    <span>Hello</span>
+    <span>{ process.env.REACT_APP_PUBLIC_API_KEY }</span>
   )
 }
