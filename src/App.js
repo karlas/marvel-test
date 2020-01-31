@@ -1,7 +1,17 @@
 import React from 'react'
+import { Provider } from './context'
+import Loading from './components/Loading'
+import Search from './components/Search'
+import CharactersContainer from './components/CharactersContainer'
+import Feedback from './components/Feedback'
 
 export default () => {
   return (
-    <span>{ process.env.REACT_APP_PUBLIC_API_KEY }</span>
+    <Provider>
+      <Search />
+      <Loading />
+      <CharactersContainer />
+      <Feedback />
+    </Provider>
   )
 }
