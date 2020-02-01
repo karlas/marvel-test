@@ -6,6 +6,7 @@ import { Context } from '../context'
 const StyledAppBar = styled(AppBar)`
   height: 280px;
   box-shadow: none;
+  background-color: ${ ({ theme }) => theme.palette.grey.background }
 `
 
 export default () => {
