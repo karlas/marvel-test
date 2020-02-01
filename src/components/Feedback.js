@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { Context } from '../context'
 
 const Text = styled.span`
-  margin: 1.25em 0.75em;
-  color: ${ ({ theme, error }) => error ? theme.palette.primary.main : theme.palette.common.black };
+  margin: 30px 18px;
+  color: ${ ({ theme, error }) => error ? theme.palette.primary.main : theme.palette.grey[ '1' ] };
+  ${ ({ error }) => error ? 'font-style: italic;' : '' };
 `
 
 export default () => {
