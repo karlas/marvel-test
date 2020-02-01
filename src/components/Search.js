@@ -21,7 +21,7 @@ const StyledAppBar = styled(AppBar)`
 `
 
 const StyledInputBase = styled(InputBase)`
-  max-width: 540px;
+  max-width: 540px !important;
   width: 100%;
   border-radius: 5px;
   padding-right: 0;

@@ -9,6 +9,7 @@ const StyledCard = styled(Card)`
   border: 2px solid ${ ({ theme }) => theme.palette.grey['4'] };
   border-radius: 5px;
   box-shadow: none;
+  ${ ({ loading }) => loading ? 'filter: blur(1px) brightness(0.5) grayscale(100%);' : '' }
   & > div{
     height : 0;
     padding-bottom: calc((2/3) * 100%);
@@ -113,7 +114,7 @@ export default ({ name, description, image, wiki, lastResize }) => {
   }, [ lastResize, wiki ])
   return (
     <Grid item xs={ 12 } sm={ 6 } md={ 4 } xl={ 3 }>
-      <StyledCard loading={ loading ? true : undefined }>
+      <StyledCard loading={ loading ? 'loading' : undefined }>
           <Thumbnail url={ image } />
           <div ref={ ref }>
             <Container>
