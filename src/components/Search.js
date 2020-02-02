@@ -51,7 +51,7 @@ const HideOnScroll = ({ children, window }) => {
   )
 }
 
-export default forwardRef((props, ref) => {
+export default () => {
   const { search, loading, actions } = useContext(Context)
   const { submit, updateSearch } = actions
   const onSubmit = e => {
@@ -72,7 +72,7 @@ export default forwardRef((props, ref) => {
   }
   return (
     <HideOnScroll>
-      <StyledAppBar ref={ ref }>
+      <StyledAppBar>
         <h1>Search your character</h1>
         <form onSubmit={ onSubmit }>
           <StyledInputBase { ...InputBaseProps } /> 
@@ -80,4 +80,4 @@ export default forwardRef((props, ref) => {
       </StyledAppBar>
     </HideOnScroll>
   )
-})
+}
