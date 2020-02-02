@@ -14,7 +14,7 @@ const DISPLAY_ERROR = 'DISPLAY_ERROR'
 const SET_LOADING = 'SET_LOADING'
 const UPDATE_SEARCH = 'UPDATE_SEARCH'
 
-const reducer = (state, { action, payload }) => {
+export const reducer = (state, { action, payload }) => {
   switch(action){
     case UPDATE_CHARACTERS:
       return { 
