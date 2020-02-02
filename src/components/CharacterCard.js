@@ -23,10 +23,8 @@ const StyledCard = styled(Card)`
 `
 
 const ThumbnailDiv = styled.div`
-  background-image: ${ ({ url }) => url ? `url(${ url })` : 'none' };
   background-color: ${ ({ theme }) => theme.palette.grey['1'] };
   background-size: cover;
-  filter: brightness(${ ({ url }) => url ? 1 : 0 });
   transition: filter 0.5s linear;
 `
 
@@ -40,7 +38,11 @@ const Thumbnail = ({ url }) => {
       img.onload = () => null
     }
   }, [ url ])
-  return <ThumbnailDiv url={ prefetchUrl } />
+  const style = {
+    backgroundImage : prefetchUrl ? `url(${ prefetchUrl })` : 'none',
+    filter: `brightness(${ prefetchUrl ? 1 : 0 })`
+  }
+  return <ThumbnailDiv style={ style } />
 }
 
 const Container = styled.div`
