@@ -63,7 +63,7 @@ export default forwardRef((props, ref) => {
     value : search,
     placeholder : 'Name of character',
     inputProps : { 'aria-label' : 'naked' },
-    onChange : e => updateSearch(e.target.value.trim()),
+    onChange : e => updateSearch(e.target.value),
     endAdornment : (
       <Button color="primary" variant="contained" type="submit" disabled={ loading } onClick={ onSubmit }>
         <SearchIcon/>

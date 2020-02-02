@@ -64,7 +64,7 @@ export const Provider =({ children, initialFetch }) => {
   const submit = async () => {
     dispatch(SET_LOADING)
     const { REACT_APP_PUBLIC_API_KEY, REACT_APP_PRIVATE_API_KEY } = initialFetch
-    const { error, characters } = await fetchCharacters(REACT_APP_PUBLIC_API_KEY, REACT_APP_PRIVATE_API_KEY, state.search)
+    const { error, characters } = await fetchCharacters(REACT_APP_PUBLIC_API_KEY, REACT_APP_PRIVATE_API_KEY, state.search.trim())
     !!error ? dispatch(DISPLAY_ERROR, error) : dispatch(UPDATE_CHARACTERS, characters)
   }
   const actions = { submit, updateSearch }
