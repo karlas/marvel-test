@@ -20,7 +20,7 @@ const StyledAppBar = styled(AppBar)`
   }
 `
 
-const StyledInputBase = styled(InputBase)`
+export const StyledInputBase = styled(InputBase)`
   max-width: 540px !important;
   width: 100%;
   border-radius: 5px;
