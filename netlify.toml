@@ -1,0 +1,9 @@
+[build]
+  command   = "yarn build"
+  functions = "functions"
+  publish   = "public"
+
+[dev]
+  command   = "serve public -p 3000"
+  functions = "functions"
+  publish   = "public"

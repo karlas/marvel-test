@@ -17,6 +17,9 @@
 
 # nextJS
 .next
+functions/nextRouter
+public/_next
+public/_redirects
 
 npm-debug.log*
 yarn-debug.log*

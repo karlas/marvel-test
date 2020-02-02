@@ -5,4 +5,7 @@ dotenvLoad();
  
 const withNextEnv = nextEnv();
  
-module.exports = withNextEnv({});
+module.exports = withNextEnv({
+  target: 'serverless',
+  distDir: '.next'
+});
