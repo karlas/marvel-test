@@ -1,4 +1,4 @@
-import React, { useContext, forwardRef } from 'react'
+import React, { useContext } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Slide from '@material-ui/core/Slide'
