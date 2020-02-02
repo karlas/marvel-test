@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Marvel Characters Test
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This is a NextJS app. However, it was bootstrapped with Create-React-App. Benefits of an SSR app instead having an SPA app is having the first render content being served on first server hit. So, we have some content that user can browse before browser downloads the JS bundle, and performs the first Marvel API request.
 
-### `yarn start`
+Transition from CRA to Next was not a big deal.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Online version
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+You can find it [here](https://fervent-snyder-8594c1.netlify.com/). Server runs on a Netlify lambda function (serverless)
 
-### `yarn test`
+## How to run in your local machine
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I have been using Yarn through the development, but if you can't install it, NPM should work with any problem.
 
-### `yarn build`
+To install:  ``yarn install``
+For development:  ``yarn dev``
+To build an optimized version for production in local: ``yarn build`` and then ``yarn start``
+Run tests: ``yarn test``
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The Marvel API keys should be entered as environment vars in a ``.env`` file, at app's root folder. You can check ``.env.sample`` in order to guess how to introduce them
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## State Management
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+App relies on React's Context API to handle its state. It's very similar to Redux.
 
-### `yarn eject`
+There's a Context which stores the state app, performs the needed API requests, and exposes data and methods to interact with the components to all component hierarchy under its provider.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Components access the context via hooks
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## UI
+I used two different libraries: Material-UI and Styled components
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Material UI provides a very mature and complete collection of components, layouts, and utils.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Styled components provide a CSS syntax and a direct abstraction to the relationship between the component props, and its visual translation. Also, Material UI CSS rules can be modified with no difficulty with Styled Components.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Unit testing
+I have used Jest with Enzyme. There are a few tests: One to check the search header behavior, and another to test the context and its relation with components.
