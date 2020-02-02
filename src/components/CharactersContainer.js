@@ -18,9 +18,13 @@ const StyledGrid = styled(Grid)`
 export default ({ children }) => {
   const { characters } = useContext(Context)
   const [ lastResize, setLastResize ] = useState(0)
+  const [ firstCharacter ] = characters
   useLayoutEffect(() => {
     (typeof window !== 'undefined') && window.addEventListener('resize', () => setLastResize(new Date().getTime()))
   }, [])
+  useLayoutEffect(() => {
+    (typeof window !== 'undefined') && window.scrollTo(0,0)
+  }, [ firstCharacter?.id ])
   return (
     <StyledGrid container spacing={ 1 }>
       { characters.map(character => <CharacterCard key={ character.id } { ...character } lastResize={ lastResize } />) }
