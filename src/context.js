@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useCallback, useReducer } from 'react'
+import React, { createContext, useReducer } from 'react'
 import fetchCharacters from './fetchCharacters'
 
 const initialState = {
@@ -47,21 +47,26 @@ const reducer = (state, { action, payload }) => {
   }
 }
 
+const initialStateWithInitialFetch = ({ error, characters }) => {
+  const action = {
+    action : !!error ? DISPLAY_ERROR : UPDATE_CHARACTERS,
+    payload : !!error ? error : characters
+  }
+  return reducer(initialState, action)
+}
+
 export const Context = createContext()
 
-export const Provider =({ children }) => {
-  const [ state, _dispatch ] = useReducer(reducer, initialState)
+export const Provider =({ children, initialFetch }) => {
+  const [ state, _dispatch ] = useReducer(reducer, initialStateWithInitialFetch(initialFetch))
   const dispatch = (action, payload) => _dispatch({ action, payload })
   const updateSearch = search => dispatch(UPDATE_SEARCH, search)
   const submit = async () => {
     dispatch(SET_LOADING)
-    const { error, characters } = await fetchCharacters(state.search)
+    const { REACT_APP_PUBLIC_API_KEY, REACT_APP_PRIVATE_API_KEY } = initialFetch
+    const { error, characters } = await fetchCharacters(REACT_APP_PUBLIC_API_KEY, REACT_APP_PRIVATE_API_KEY, state.search)
     !!error ? dispatch(DISPLAY_ERROR, error) : dispatch(UPDATE_CHARACTERS, characters)
   }
-  const initialSubmit = useCallback(submit, [])
-  useEffect(() => {
-    initialSubmit()
-  }, [ initialSubmit ])
   const actions = { submit, updateSearch }
   const provided = { ...state, actions }
   return (

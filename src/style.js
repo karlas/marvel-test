@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${ ({ theme }) => theme.palette.grey.background };
     text-rendering: optimizeLegibility;
   }
-  #root{
+  #__next{
     margin: 0;
     height: 100vh;
     width: calc(100% - 60px);

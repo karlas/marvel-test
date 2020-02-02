@@ -6,11 +6,11 @@ import Search from './components/Search'
 import CharactersContainer from './components/CharactersContainer'
 import Feedback from './components/Feedback'
 
-export default () => {
+export default ({ initialFetch }) => {
   const ref = createRef()
   return (
     <Style>
-      <Provider>
+      <Provider initialFetch={ initialFetch }>
         <Search ref={ ref } />
         <Loading />
         <CharactersContainer getSearchHeight={ () => ref.current.clientHeight }>

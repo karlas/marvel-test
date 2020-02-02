@@ -1,9 +1,10 @@
-import React, { useContext, useState, useRef, useLayoutEffect } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import styled from 'styled-components'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { Context } from '../context'
+import useLayoutEffect from '../useIsomorphicLayoutEffect'
 
 const StyledCard = styled(Card)`
   border: 2px solid ${ ({ theme }) => theme.palette.grey['4'] };

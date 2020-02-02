@@ -1,18 +1,17 @@
 import md5 from 'md5'
+import 'isomorphic-fetch'
 
-const { REACT_APP_PUBLIC_API_KEY, REACT_APP_PRIVATE_API_KEY } = process.env
-
-export default async (name = '') => {
-  if (!REACT_APP_PUBLIC_API_KEY || !REACT_APP_PUBLIC_API_KEY){
+export default async (publicKey, privateKey, name = '') => {
+  if (!publicKey || !publicKey){
     return { error : 'No API keys provided' }
   }
   const now = new Date().getTime().toString()
-  const hash = md5(now + REACT_APP_PRIVATE_API_KEY + REACT_APP_PUBLIC_API_KEY)
-  const authParams = `?ts=${ now }&apikey=${ REACT_APP_PUBLIC_API_KEY }&hash=${ hash }`
+  const hash = md5(now + privateKey + publicKey)
+  const authParams = `?ts=${ now }&apikey=${ publicKey }&hash=${ hash }`
   const searchName = name.length ? ('&name=' + name) : ''
   const url = 'https://gateway.marvel.com/v1/public/characters' + authParams + searchName
   try{
-    const response = await window.fetch(url)
+    const response = await fetch(url)
     const { data } = await response.json()
     const characters = data.results.map(({ id, name, description, thumbnail, urls }) => {
       const { path, extension } = thumbnail
