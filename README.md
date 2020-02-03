@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a NextJS app. However, it was bootstrapped with Create-React-App. Benefits of an SSR app instead having an SPA app is having the first render content being served on first server hit. So, we have some content that user can browse before browser downloads the JS bundle, and performs the first Marvel API request.
+This is a NextJS app. However, it was bootstrapped with Create-React-App. Benefits of an SSR app instead having an SPA app is having the first render content being served on first server hit. So, we have some content that user can browse before browser downloads the JS bundle, and performs the first Marvel API request. In addition, it improves SEO by having more content on first request
 
 Transition from CRA to Next was not a big deal.
 
